@@ -1,7 +1,7 @@
 from playwright.sync_api import sync_playwright
 import os
 
-DOWNLOAD_DIR = "/Users/sriramshanmugam/Documents/ai4trade"
+DOWNLOAD_DIR = "/Users/user/Documents/ai4trade"
 os.makedirs(DOWNLOAD_DIR, exist_ok=True)
 
 output_csv_home = f"{DOWNLOAD_DIR}/ai4trade_latest.csv"
