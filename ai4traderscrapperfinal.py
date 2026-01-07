@@ -4,7 +4,7 @@ import os
 import csv
 import time
 
-HOME_DIR = "/Users/sriramshanmugam/Documents/ai4trade/balance"
+HOME_DIR = "/Users/user/Documents/ai4trade/balance"
 os.makedirs(HOME_DIR, exist_ok=True)
 
 output_csv_home = f"{HOME_DIR}/ai4trade_latest.csv"
