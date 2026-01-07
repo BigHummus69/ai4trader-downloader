@@ -1,6 +1,6 @@
 import pandas as pd
-portfolio_csv = "/Users/sriramshanmugam/Documents/ai4trade/portfolio/ai4trade_portfolio_all_models.csv"
-home_csv = "/Users/sriramshanmugam/Documents/ai4trade/ai4trade_latest.csv"
+portfolio_csv = "/Users/user/Documents/ai4trade/portfolio/ai4trade_portfolio_all_models.csv"
+home_csv = "/Users/user/Documents/ai4trade/ai4trade_latest.csv"
 
 df_portfolio = pd.read_csv(portfolio_csv)
 df_home = pd.read_csv(home_csv)
