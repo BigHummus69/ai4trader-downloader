@@ -3,7 +3,7 @@ import csv
 import os
 import time
 
-OUTPUT_DIR = "/Users/sriramshanmugam/Documents/ai4trade/portfolio"
+OUTPUT_DIR = "/Users/user/Documents/ai4trade/portfolio"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 output_csv_portfolio = f"{OUTPUT_DIR}/ai4trade_portfolio_all_models.csv"
