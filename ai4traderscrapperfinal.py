@@ -9,7 +9,7 @@ os.makedirs(HOME_DIR, exist_ok=True)
 
 output_csv_home = f"{HOME_DIR}/ai4trade_latest.csv"
 
-PORTFOLIO_DIR = "/Users/sriramshanmugam/Documents/ai4trade/portfolio"
+PORTFOLIO_DIR = "/Users/user/Documents/ai4trade/portfolio"
 os.makedirs(PORTFOLIO_DIR, exist_ok=True)
 
 output_csv_portfolio = f"{PORTFOLIO_DIR}/ai4trade_portfolio_all_models.csv"
@@ -32,7 +32,7 @@ try: # had to use this since my python kept crashing like crazy, its now part of
             timeout=60000
         )
 
-        # Wait for overlay to disappear, there was a massive delay because of both Balance and Portfolio loading
+        # Wait for overlay to disappear, there was a massive delay because of both Balance and Portfolio loading simultaneously so had todo this to fix it
         try:
             page.wait_for_selector("#loadingOverlay", state="hidden", timeout=60000)
         except:
@@ -52,7 +52,7 @@ try: # had to use this since my python kept crashing like crazy, its now part of
         browser.close()
 
     print("Balance export completed successfully.")
-    balance_success = True # turn to true so portfolio export can happen, boolean logic so if not true, the entire balance_success dosen't exist
+    balance_success = True # turn to true so portfolio export can happen, boolean logic so if not true, the entire balance_success doesn't exist
 except Exception as e:
     print(f"Balance export failed: {e}") # i aint elaborating on this
 
@@ -134,15 +134,15 @@ else:
     print("Portfolio export skipped because balance export failed.") # haha funny if else statement ends
 
 #----COMBINE CSV----#
-portfolio_csv = "/Users/sriramshanmugam/Documents/ai4trade/portfolio/ai4trade_portfolio_all_models.csv"
-home_csv = "/Users/sriramshanmugam/Documents/ai4trade/balance/ai4trade_latest.csv"
+portfolio_csv = "/Users/user/Documents/ai4trade/portfolio/ai4trade_portfolio_all_models.csv"
+home_csv = "/Users/user/Documents/ai4trade/balance/ai4trade_latest.csv"
 
 df_portfolio = pd.read_csv(portfolio_csv) #use pd to read csv
 df_home = pd.read_csv(home_csv)
 
 df_home['source'] = 'home' #add a column to identify source
 df_combined = pd.concat([df_portfolio, df_home], ignore_index=True, sort=False) #concentate (idk what that means, it's just combining) both csvs
-combined_csv = "/Users/sriramshanmugam/Documents/ai4trade/combined_ai4trade_data.csv" 
+combined_csv = "/Users/user/Documents/ai4trade/combined_ai4trade_data.csv" 
 df_combined.to_csv(combined_csv, index=False)
 print(f"✅ Combined CSV saved to {combined_csv}")
 
