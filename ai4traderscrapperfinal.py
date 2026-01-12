@@ -1,15 +1,22 @@
 import pandas as pd
 from playwright.sync_api import sync_playwright
+from pathlib import Path
 import os
 import csv
 import time
 
-HOME_DIR = "/Users/user/Documents/ai4trade/balance"
+with open('selected_directory.txt', 'r', encoding='utf-8') as f:
+    target_dir = f.read().strip()
+    print (f"\"{target_dir}\"")
+
+print (f"\"{target_dir}\"")
+
+HOME_DIR = f"\"{target_dir}/balance\""
 os.makedirs(HOME_DIR, exist_ok=True)
 
 output_csv_home = f"{HOME_DIR}/ai4trade_latest.csv"
 
-PORTFOLIO_DIR = "/Users/user/Documents/ai4trade/portfolio"
+PORTFOLIO_DIR = f"\"{target_dir}/portfolio\""
 os.makedirs(PORTFOLIO_DIR, exist_ok=True)
 
 output_csv_portfolio = f"{PORTFOLIO_DIR}/ai4trade_portfolio_all_models.csv"
@@ -134,15 +141,15 @@ else:
     print("Portfolio export skipped because balance export failed.") # haha funny if else statement ends
 
 #----COMBINE CSV----#
-portfolio_csv = "/Users/user/Documents/ai4trade/portfolio/ai4trade_portfolio_all_models.csv"
-home_csv = "/Users/user/Documents/ai4trade/balance/ai4trade_latest.csv"
+portfolio_csv = f"{target_dir}/portfolio/ai4trade_portfolio_all_models.csv"
+home_csv = f"{target_dir}/balance/ai4trade_latest.csv"
 
 df_portfolio = pd.read_csv(portfolio_csv) #use pd to read csv
 df_home = pd.read_csv(home_csv)
 
 df_home['source'] = 'home' #add a column to identify source
 df_combined = pd.concat([df_portfolio, df_home], ignore_index=True, sort=False) #concentate (idk what that means, it's just combining) both csvs
-combined_csv = "/Users/user/Documents/ai4trade/combined_ai4trade_data.csv" 
+combined_csv = f"{target_dir}/combined_ai4trade_data.csv" 
 df_combined.to_csv(combined_csv, index=False)
 print(f"✅ Combined CSV saved to {combined_csv}")
 
