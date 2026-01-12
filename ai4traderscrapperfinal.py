@@ -11,12 +11,13 @@ with open('selected_directory.txt', 'r', encoding='utf-8') as f:
 
 print (f"\"{target_dir}\"")
 
-HOME_DIR = f"\"{target_dir}/balance\""
+HOME_DIR = os.path.join(target_dir, "balance")
+print (HOME_DIR)
 os.makedirs(HOME_DIR, exist_ok=True)
 
 output_csv_home = f"{HOME_DIR}/ai4trade_latest.csv"
 
-PORTFOLIO_DIR = f"\"{target_dir}/portfolio\""
+PORTFOLIO_DIR = os.path.join(target_dir, "portfolio")
 os.makedirs(PORTFOLIO_DIR, exist_ok=True)
 
 output_csv_portfolio = f"{PORTFOLIO_DIR}/ai4trade_portfolio_all_models.csv"
